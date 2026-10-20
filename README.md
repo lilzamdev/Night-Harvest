@@ -6,7 +6,7 @@ A 2D top-down farming and survival adventure game built with **Godot Engine 4**.
 Farm by day, defend your crops from zombies by night.
 
 ## 🎮 Download & Play
-1. Go to the [**Releases**](https://github.com/limbrasonadev/Night-Harvest/releases/latest) page.
+1. Go to the [**Releases**](https://github.com/lilzamdev/Night-Harvest/releases/latest) page.
 2. Download **`NightHarvest-<version>-windows.zip`**.
 3. Unzip it anywhere and run **`NightHarvest.exe`** (keep `NightHarvest.pck` in the same folder).
 

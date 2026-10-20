@@ -28,7 +28,7 @@ const UPDATE_DIR := "user://updates"
 const STATE_FILE := "user://updates/installed.json"
 const PREFS_FILE := "user://updates/prefs.cfg"
 const SETTING_URL := "night_harvest/updates/manifest_url"
-const DEFAULT_MANIFEST_URL := "https://raw.githubusercontent.com/limbrasonadev/Night-Harvest/master/updates/manifest.json"
+const DEFAULT_MANIFEST_URL := "https://raw.githubusercontent.com/lilzamdev/Night-Harvest/main/updates/manifest.json"
 
 ## Version the player is actually running (base, or the loaded update).
 var current_version: String = BASE_VERSION

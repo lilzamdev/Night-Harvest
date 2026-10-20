@@ -1,10 +1,11 @@
 {
-  "version": "1.4.2",
-  "pck_url": "",
-  "sha256": "",
-  "size": 0,
+  "version": "1.4.3",
+  "pck_url": "https://github.com/lilzamdev/Night-Harvest/releases/download/v1.4.3/night_harvest_1.4.3.pck",
+  "sha256": "72439cd70f125e5d774da01f1216602f66cd99e68662a5659dac75cfe99c4f11",
+  "size": 9229380,
   "min_base": "1.4.2",
   "notes": [
+    "Night Harvest 1.4.3: ripe wheat is visible again, animals graze, peck and hop when they stand still, no more rocks inside trees, doors and gates work from both sides, and a new logo.",
     "Night Harvest 1.4.2: wooden bridges, a 1x2 bed, 1-block anvil and furnace, smoother boats that face where you row, the Sunforged Greatsword, and the Rotting Giant now burns in sunlight.",
     "Night Harvest 1.4: Seasons & Seas. Four seasons, oceans and islands, boats, fishing, new villages and ruins, biome blocks, animals, decorations, a new workbench, rebindable controls and many fixes."
   ]

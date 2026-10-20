@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Exported builds (published on GitHub Releases instead)
+/Build/
+/build/

@@ -133,7 +133,7 @@ toggle_fullscreen={
 
 [night_harvest]
 
-updates/manifest_url="https://raw.githubusercontent.com/limbrasonadev/Night-Harvest/master/updates/manifest.json"
+updates/manifest_url="https://raw.githubusercontent.com/lilzamdev/Night-Harvest/main/updates/manifest.json"
 
 [physics]
 

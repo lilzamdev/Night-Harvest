@@ -58,7 +58,7 @@ Every player who opens the game afterwards gets the update offer.
 ### Where the game looks for the manifest
 
 Project Settings › `night_harvest/updates/manifest_url` (in `project.godot`). It points
-at `https://raw.githubusercontent.com/limbrasonadev/Night-Harvest/master/updates/manifest.json`.
+at `https://raw.githubusercontent.com/lilzamdev/Night-Harvest/main/updates/manifest.json`.
 **Change it to your real repository/branch before you ship the first build**, because
 the URL baked into that build is the one players will use.
 
