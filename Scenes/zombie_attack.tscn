@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dp2uhp4bbef8s"]
+
+[ext_resource type="Texture2D" uid="uid://bka82xqgp4tns" path="res://Assets/Enemies/zombie/1_Default/Zombie_Default_Attack1.png" id="1_2in2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gobq4"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yac6j"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwhhk"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceoah"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00yot"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pj2f"]
+atlas = ExtResource("1_2in2j")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gobq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yac6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwhhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceoah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00yot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pj2f")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 7.28011
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1303222715]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1678850707]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"attack"
+autoplay = "attack"
+frame_progress = 0.18612053
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2138937838]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_2baof")

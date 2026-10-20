@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://7pfyj8hkypo0"]
+
+[ext_resource type="Texture2D" uid="uid://coikfrumwggib" path="res://Assets/Player/character.png" id="1_m0kn7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swtob"]
+atlas = ExtResource("1_m0kn7")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acnik"]
+atlas = ExtResource("1_m0kn7")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swtob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acnik")
+}],
+"loop": 1,
+"name": &"ken_idle_back",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_javsr"]
+radius = 6.0827627
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=323122597]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1863683586]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"ken_idle_back"
+autoplay = "ken_idle_back"
+frame_progress = 0.525025
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560972468]
+shape = SubResource("CircleShape2D_javsr")

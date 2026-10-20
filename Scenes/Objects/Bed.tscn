@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbed0bj3ct001"]
+
+[ext_resource type="Script" path="res://scripts/Bed.gd" id="1_bed_script"]
+[ext_resource type="Texture2D" uid="uid://dla3eq8tyeii0" path="res://Assets/HouseInterior/HouseInteriorA.png" id="2_interior_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bed"]
+atlas = ExtResource("2_interior_tex")
+region = Rect2(128, 33, 32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
+size = Vector2(22, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(48, 54)
+
+[node name="Bed" type="Node2D"]
+script = ExtResource("1_bed_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_bed")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_solid")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(10, 2)
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="SleepPosition" type="Marker2D" parent="."]
+position = Vector2(0.5, 1.5)
+
+[node name="WakePosition" type="Marker2D" parent="."]
+position = Vector2(26, 4)
+
+[node name="InteractionLabel" type="Label" parent="."]
+visible = false
+offset_left = 18.0
+offset_top = -14.0
+offset_right = 82.0
+offset_bottom = 2.0
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "[G] Sleep"
+vertical_alignment = 1

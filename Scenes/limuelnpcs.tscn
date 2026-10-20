@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://uab4ytat6r7s"]
+
+[ext_resource type="Texture2D" uid="uid://byy1e43i6bd85" path="res://Assets/Player/limuel(2).png" id="1_4i5rw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shtf8"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6b35"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13gq"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfjvj"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46xfp"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqh8q"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(160, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnuwp"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvp8w"]
+atlas = ExtResource("1_4i5rw")
+region = Rect2(224, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shtf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6b35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfjvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46xfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqh8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnuwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvp8w")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=913911646]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=965910351]
+sprite_frames = SubResource("SpriteFrames_2baof")
+frame_progress = 0.0043460387

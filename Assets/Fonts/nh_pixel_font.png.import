@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://c6u4ypk20twdw"
+path="res://.godot/imported/nh_pixel_font.png-967fae944cb48725fb3d070d65415801.fontdata"
+
+[deps]
+
+source_file="res://Assets/Fonts/nh_pixel_font.png"
+dest_files=["res://.godot/imported/nh_pixel_font.png-967fae944cb48725fb3d070d65415801.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("32-126", "183", "8217", "8212", "8249", "8250", "9664", "9654")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=7
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

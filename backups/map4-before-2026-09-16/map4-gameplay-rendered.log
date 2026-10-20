@@ -1,0 +1,94 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.6129 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics
+
+WARNING: Nodes with non-equal opposite anchors will have their size overridden after _ready(). 
+If you want to set size, change the anchors or consider using set_deferred().
+   at: _set_size (scene/gui/control.cpp:1519)
+   GDScript backtrace (most recent call first):
+       [0] _fit_small_viewport (res://scripts/hud.gd:73)
+PASS: Exactly one player
+PASS: Exactly one hud_ui
+PASS: Exactly one farming_manager
+PASS: Exactly one player_stats
+PASS: Exactly one game_clock
+PASS: Exactly one spawn_manager
+PASS: Exactly one environment_manager
+PASS: Exactly one quest_manager
+PASS: Ken spawns on clear farm path at world (4,23)
+PASS: Existing camera follows Ken
+PASS: Camera limits cover map4
+PASS: Map4 terrain loaded
+PASS: Map4 environment loaded
+PASS: Original farming layers and source IDs remain connected
+PASS: No duplicate farming fallback layer
+PASS: Animal starts clear: CharacterBody2D
+PASS: Animal starts clear: CharacterBody2D2
+PASS: Animal starts clear: CharacterBody2D4
+PASS: Animal starts clear: CharacterBody2D5
+PASS: Animal starts clear: CharacterBody2D6
+PASS: Animal starts clear: CharacterBody2D7
+PASS: Animal starts clear: CharacterBody2D8
+PASS: Animal starts clear: CharacterBody2D9
+PASS: Animal starts clear: CharacterBody2D10
+PASS: Animal starts clear: CharacterBody2D11
+PASS: Animal starts clear: CharacterBody2D12
+PASS: Animal starts clear: CharacterBody2D13
+PASS: Animal starts clear: CharacterBody2D14
+PASS: Animal starts clear: CharacterBody2D15
+PASS: Animal starts clear: CharacterBody2D16
+PASS: Animal starts clear: CharacterBody2D17
+PASS: Animal starts clear: CharacterBody2D18
+PASS: Animal starts clear: CharacterBody2D19
+PASS: Animal starts clear: CharacterBody2D20
+PASS: Animal starts clear: CharacterBody2D21
+PASS: Animal starts clear: CharacterBody2D22
+PASS: Animal starts clear: CharacterBody2D23
+PASS: Animal starts clear: CharacterBody2D24
+PASS: Animal starts clear: @CharacterBody2D@186
+PASS: Animal starts clear: @CharacterBody2D@187
+PASS: Animal starts clear: @CharacterBody2D@188
+PASS: Animal starts clear: @CharacterBody2D@189
+PASS: Animal starts clear: @CharacterBody2D@190
+PASS: Five main map regions have connected paths
+PASS: Ken physically traverses path to farmhouse
+PASS: Ken physically traverses path to barn
+PASS: Ken physically traverses path to village
+PASS: Ken physically traverses path to graveyard
+PASS: Ken physically traverses path to east_field
+PASS: Water is blocked and cannot be hoed
+PASS: River water has collision
+PASS: Solid map atlas has collision: 0
+PASS: Solid map atlas has collision: 3
+PASS: Solid map atlas has collision: 7
+PASS: Solid map atlas has collision: 9
+PASS: Map4 has usable farming soil
+PASS: Hoe map4 soil
+PASS: Plant in existing crop container
+PASS: Crop stays aligned to map cell
+PASS: Water planted crop
+PASS: Crop grows via GameClock signals
+PASS: Harvest returns produce and seeds to existing inventory
+PASS: Farming EXP reaches existing stats and HUD
+PASS: Existing inventory contains food
+Ken: Ate Carrot (+8 hunger)
+PASS: Eating animates, consumes one item, and restores hunger
+PASS: Minimap still follows Ken
+PASS: HUD inventory button works
+PASS: Existing EXP/level-up formula still works
+[SpawnManager] Wave spawned: 10 zombies at (112.0, 70.0)
+PASS: Night starts the existing 10-zombie wave and timer
+PASS: Zombie spawn stays clear
+PASS: Original zombie AI targets existing Ken
+PASS: Existing sword swing damages zombie on map4
+PASS: Zombie attack still damages Ken
+PASS: Bed wake marker is clear of map4 obstacles
+PASS: G opens existing sleep confirmation
+PASS: Sleep retains corrected vertical bed alignment
+PASS: Sleep restores Ken beside bed
+PASS: Sleep advances to 06:00 on day 2
+PASS: Sleep clears night zombies
+Bed: Good morning! Woke up at 06:00
+PASS: Day/night lighting remains connected
+PASS: Daily quests remain active
+PASS: No duplicate player or HUD after all systems run
+MAP4 GAMEPLAY CHECK COMPLETE: 0 failures

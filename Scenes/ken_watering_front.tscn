@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dgwffxy7l27x6"]
+
+[ext_resource type="Texture2D" uid="uid://coikfrumwggib" path="res://Assets/Player/character.png" id="1_gfnm2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fgbk"]
+atlas = ExtResource("1_gfnm2")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2rgg"]
+atlas = ExtResource("1_gfnm2")
+region = Rect2(32, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne1gm"]
+atlas = ExtResource("1_gfnm2")
+region = Rect2(64, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxpaw"]
+atlas = ExtResource("1_gfnm2")
+region = Rect2(96, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r76m"]
+atlas = ExtResource("1_gfnm2")
+region = Rect2(128, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fgbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2rgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne1gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxpaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r76m")
+}],
+"loop": 1,
+"name": &"ken_watering_front",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 4.1231055
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1781100330]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1522731783]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"ken_watering_front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=505870961]
+shape = SubResource("CircleShape2D_2baof")

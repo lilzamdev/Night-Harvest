@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://biojhopgg6irn"]
+
+[ext_resource type="Texture2D" uid="uid://cfi8nk26tuurv" path="res://Assets/Enemies/zombie/1_Default/Zombie_Default_Hurt.png" id="1_rl2ie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8hst"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6sle"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3n0i"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43fep"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im33o"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uprf6"]
+atlas = ExtResource("1_rl2ie")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8hst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6sle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3n0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43fep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im33o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uprf6")
+}],
+"loop": 1,
+"name": &"zombie_hurt",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 8.246211
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1309682942]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=295455194]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"zombie_hurt"
+autoplay = "zombie_hurt"
+frame_progress = 0.6152088
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1458599003]
+shape = SubResource("CircleShape2D_2baof")

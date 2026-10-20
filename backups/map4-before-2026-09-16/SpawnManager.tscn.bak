@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://edyfjf3o7xcu"]
+
+[ext_resource type="Script" uid="uid://tvekaaxvwjyd" path="res://scripts/SpawnManager.gd" id="1_spawn_mgr"]
+
+[node name="SpawnManager" type="Node2D" unique_id=646399751]
+script = ExtResource("1_spawn_mgr")
+
+[node name="ZombieSpawnPoint" type="Marker2D" parent="." unique_id=2131998792]
+position = Vector2(91, 47)
+
+[node name="AnimalSpawnPoints" type="Node2D" parent="." unique_id=458375329]
+position = Vector2(37, 54)
+
+[node name="SpawnPoint01" type="Marker2D" parent="AnimalSpawnPoints" unique_id=348510688 groups=["animal_spawn_point"]]
+position = Vector2(61, 35)
+
+[node name="SpawnPoint02" type="Marker2D" parent="AnimalSpawnPoints" unique_id=1243887947 groups=["animal_spawn_point"]]
+position = Vector2(28, 8)
+
+[node name="SpawnPoint03" type="Marker2D" parent="AnimalSpawnPoints" unique_id=915426341 groups=["animal_spawn_point"]]
+position = Vector2(25, 37)
+
+[node name="SpawnPoint04" type="Marker2D" parent="AnimalSpawnPoints" unique_id=776392092 groups=["animal_spawn_point"]]
+position = Vector2(59, 63)
+
+[node name="SpawnPoint05" type="Marker2D" parent="AnimalSpawnPoints" unique_id=1516275114 groups=["animal_spawn_point"]]
+position = Vector2(86, 57)
+
+[node name="ZombieSpawnTimer" type="Timer" parent="." unique_id=1726950502]
+wait_time = 60.0
+autostart = true

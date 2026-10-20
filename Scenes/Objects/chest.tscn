@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bch3st0bj3ct1"]
+
+[ext_resource type="Script" path="res://scripts/chest.gd" id="1_chest"]
+[ext_resource type="Texture2D" uid="uid://53i3kq8yrnng" path="res://Assets/Outdoor decoration/Chest.png" id="2_chest_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
+size = Vector2(16, 12)
+
+[node name="Chest" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_chest")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_chest_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_solid")

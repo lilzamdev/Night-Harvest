@@ -1,0 +1,46 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+==================================================
+--- NIGHT HARVEST: PHASE 1.5 FARMING TEST SUITE ---
+==================================================
+
+[TEST 1] Testing Hoe System & Soil Conversion...
+Test 1 (Hoe System): OK
+
+[TEST 2] Testing Seed Planting...
+Test 2 (Planting): OK
+
+[TEST 3] Testing Invalid Planting Validation...
+Test 3 (Invalid Planting Validation): OK
+
+[TEST 4] Testing Watering Revision (Ground Tile Untouched)...
+Test 4 (Watering Revision): OK
+
+[TEST 5] Testing Single Watering & 30-Second Continuous Growth...
+Test 5 (Water Once & 30s Growth): OK
+
+[TEST 6] Testing Renewable Seed Production & Harvesting...
+Test 6 (Renewable Seeds & Harvest): OK
+
+[TEST 7] Testing Unhoeing / Undo Hoeing...
+Test 7 (Unhoeing Empty Soil): OK
+
+[TEST 8] Testing Crop Protection Against Unhoeing...
+Test 8 (Crop Protection Unhoe Blocked): OK
+
+[TEST 9] Testing All 6 Crops (Carrot, Wheat, Watermelon, Corn, Potato, Tomato)...
+Test 9 (All 6 Crops Independent Growth): OK
+
+[TEST 10] Testing Farming XP & GameClock Minute Progression...
+Test 10 (XP & Clock): OK
+
+[TEST 11] Testing Multi-Layer Visual Pipeline...
+Test 11 (Multi-Layer Pipeline): OK
+
+[TEST 12] Testing Initial Inventory with All 6 Crops and 6 Seeds...
+Test 12 (All Crops & Seeds in Inventory): OK
+==================================================
+--- ALL 12 PHASE 1.5 ACCEPTANCE TESTS PASSED! ---
+==================================================

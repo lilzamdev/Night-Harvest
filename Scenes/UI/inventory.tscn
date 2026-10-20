@@ -1,0 +1,1249 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_inv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.12, 0.09, 0.07, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.45, 0.3, 0.18, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.16, 0.12, 0.09, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.38, 0.27, 0.17, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hotbar_slot"]
+bg_color = Color(0.2, 0.15, 0.11, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.5, 0.22, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot_selected"]
+bg_color = Color(0.28, 0.22, 0.12, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.25, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.6)
+
+[node name="Inventory" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inv")
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.5)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(340, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "INVENTORY & HOTBAR"
+horizontal_alignment = 1
+
+[node name="HotbarSectionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "⚡ HOTBAR (Keys 1-4)"
+
+[node name="HotbarGrid" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="HotbarSlot1" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar_slot")
+
+[node name="SlotNumLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot1"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 0.95)
+theme_override_font_sizes/font_size = 9
+text = "1"
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="HotbarSlot2" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar_slot")
+
+[node name="SlotNumLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot2"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 0.95)
+theme_override_font_sizes/font_size = 9
+text = "2"
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="HotbarSlot3" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar_slot")
+
+[node name="SlotNumLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot3"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 0.95)
+theme_override_font_sizes/font_size = 9
+text = "3"
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="HotbarSlot4" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar_slot")
+
+[node name="SlotNumLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot4"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 0.95)
+theme_override_font_sizes/font_size = 9
+text = "4"
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HotbarGrid/HotbarSlot4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackpackSectionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.75, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "🎒 BACKPACK (24 Slots)"
+
+[node name="SlotGrid" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 6
+
+[node name="Slot1" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot2" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot3" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot4" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot4"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot5" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot6" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot6"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot7" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot7"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot8" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot8"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot9" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot9"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot9"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot10" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot10"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot10"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot11" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot11"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot11"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot12" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot12"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot12"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot13" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot13"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot13"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot14" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot14"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot14"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot15" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot15"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot15"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot16" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot16"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot16"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot17" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot17"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot17"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot18" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot18"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot18"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot19" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot19"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot19"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot20" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot20"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot20"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot21" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot21"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot21"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot22" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot22"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot22"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot23" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot23"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot23"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="Slot24" type="Panel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot24"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SlotGrid/Slot24"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="InstructionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 10
+text = "Drag & Drop to move items | 1-4: Quick Assign | F: Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bs1umq20nvlc7"]
+
+[ext_resource type="Texture2D" uid="uid://dla3eq8tyeii0" path="res://Assets/HouseInterior/HouseInteriorA.png" id="1_interior_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stool"]
+atlas = ExtResource("1_interior_tex")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
+size = Vector2(16, 12)
+
+[node name="Stool" type="StaticBody2D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_stool")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_solid")

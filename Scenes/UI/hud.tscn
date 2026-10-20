@@ -1,0 +1,471 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://coikfrumwggib" path="res://Assets/Player/character.png" id="2_char"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/minimap.tscn" id="3_minimap"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/hotbar.tscn" id="4_hotbar"]
+[ext_resource type="Theme" path="res://Scenes/UI/hud_theme.tres" id="10_theme"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_portrait"]
+atlas = ExtResource("2_char")
+region = Rect2(8, 1, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait_bg"]
+bg_color = Color(0.08, 0.06, 0.05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.55, 0.25, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.85, 0.2, 0.2, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_energy_fill"]
+bg_color = Color(0.85, 0.65, 0.2, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp_fill"]
+bg_color = Color(0.39, 0.48, 0.29, 1)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+theme = ExtResource("10_theme")
+texture_filter = 1
+
+[node name="TopLeft" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 256
+offset_bottom = 94
+mouse_filter = 2
+
+[node name="PlayerStatus" type="PanelContainer" parent="TopLeft"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TopLeft/PlayerStatus"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="HBox" type="HBoxContainer" parent="TopLeft/PlayerStatus/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PortraitBox" type="PanelContainer" parent="TopLeft/PlayerStatus/Margin/HBox"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_portrait_bg")
+
+[node name="PortraitTexture" type="TextureRect" parent="TopLeft/PlayerStatus/Margin/HBox/PortraitBox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBox" type="VBoxContainer" parent="TopLeft/PlayerStatus/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="HPBar" type="ProgressBar" parent="TopLeft/PlayerStatus/Margin/HBox/VBox"]
+custom_minimum_size = Vector2(172, 18)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+mouse_filter = 2
+
+[node name="HPLabel" type="Label" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/HPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_font_sizes/font_size = 11
+text = "HP  100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="EnergyBar" type="ProgressBar" parent="TopLeft/PlayerStatus/Margin/HBox/VBox"]
+custom_minimum_size = Vector2(172, 18)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_energy_fill")
+value = 80.0
+show_percentage = false
+mouse_filter = 2
+
+[node name="EnergyLabel" type="Label" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/EnergyBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_font_sizes/font_size = 11
+text = "HUNGER  100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="LevelRow" type="HBoxContainer" parent="TopLeft/PlayerStatus/Margin/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LevelLabel" type="Label" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/LevelRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "LV 1"
+custom_minimum_size = Vector2(36, 16)
+clip_text = true
+
+[node name="XPBar" type="ProgressBar" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/LevelRow"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_xp_fill")
+value = 70.0
+show_percentage = false
+mouse_filter = 2
+
+[node name="MidLeft" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 102
+offset_right = 256
+offset_bottom = 212
+mouse_filter = 2
+
+[node name="QuestTracker" type="PanelContainer" parent="MidLeft"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="MidLeft/QuestTracker"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="MidLeft/QuestTracker/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderLabel" type="Label" parent="MidLeft/QuestTracker/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.78, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "QUESTS"
+
+[node name="HSeparator" type="HSeparator" parent="MidLeft/QuestTracker/Margin/VBox"]
+layout_mode = 2
+
+[node name="Quest1" type="HBoxContainer" parent="MidLeft/QuestTracker/Margin/VBox"]
+custom_minimum_size = Vector2(0, 19)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Quest2" type="HBoxContainer" parent="MidLeft/QuestTracker/Margin/VBox"]
+custom_minimum_size = Vector2(0, 19)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TopCenter" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62
+offset_top = 12.0
+offset_right = 62
+offset_bottom = 66
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Calendar" type="PanelContainer" parent="TopCenter"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TopCenter/Calendar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="VBox" type="VBoxContainer" parent="TopCenter/Calendar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="DayLabel" type="Label" parent="TopCenter/Calendar/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "DAY 1"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="TopCenter/Calendar/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "09:30 AM"
+horizontal_alignment = 1
+
+[node name="TopRight" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 194
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="TopRight"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 0
+
+[node name="Resources" type="PanelContainer" parent="TopRight/VBox"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TopRight/VBox/Resources"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBox" type="HBoxContainer" parent="TopRight/VBox/Resources/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="TopRight/VBox/Resources/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.3, 1)
+theme_override_font_sizes/font_size = 11
+text = "G 0"
+custom_minimum_size = Vector2(44, 18)
+size_flags_horizontal = 3
+clip_text = true
+horizontal_alignment = 1
+
+[node name="WoodLabel" type="Label" parent="TopRight/VBox/Resources/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 0.5, 1)
+theme_override_font_sizes/font_size = 11
+text = "W 0"
+custom_minimum_size = Vector2(44, 18)
+size_flags_horizontal = 3
+clip_text = true
+horizontal_alignment = 1
+
+[node name="StoneLabel" type="Label" parent="TopRight/VBox/Resources/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.82, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+text = "S 0"
+custom_minimum_size = Vector2(44, 18)
+size_flags_horizontal = 3
+clip_text = true
+horizontal_alignment = 1
+
+[node name="Minimap" parent="TopRight/VBox" instance=ExtResource("3_minimap")]
+layout_mode = 2
+size_flags_horizontal = 1
+custom_minimum_size = Vector2(164, 132)
+
+[node name="BottomRight" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -164
+offset_top = -68
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Nightfall" type="PanelContainer" parent="BottomRight"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="BottomRight/Nightfall"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBox" type="VBoxContainer" parent="BottomRight/Nightfall/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="BottomRight/Nightfall/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.65, 0.9, 1)
+theme_override_font_sizes/font_size = 11
+text = "NIGHTFALL IN"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="BottomRight/Nightfall/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "03:30"
+horizontal_alignment = 1
+custom_minimum_size = Vector2(0, 20)
+
+[node name="BottomCenter" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Hotbar" parent="BottomCenter" instance=ExtResource("4_hotbar")]
+layout_mode = 1
+
+[node name="BottomLeft" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -40.0
+offset_right = 196.0
+offset_bottom = -12.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="HUDMessage" type="Label" parent="BottomLeft"]
+custom_minimum_size = Vector2(184, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_font_sizes/font_size = 10
+text = ""
+horizontal_alignment = 0
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="XPLabel" type="Label" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/LevelRow/XPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+clip_text = true
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 10
+text = "EXP 0 / 100"
+
+[node name="FeedbackLabel" type="Label" parent="TopLeft/PlayerStatus/Margin/HBox/VBox/LevelRow/XPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+clip_text = true
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 10
+text = ""
+
+[node name="Quest3" type="HBoxContainer" parent="MidLeft/QuestTracker/Margin/VBox"]
+custom_minimum_size = Vector2(0, 19)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Daily objective"
+text_overrun_behavior = 3
+clip_text = true
+mouse_filter = 2
+
+[node name="Progress" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest1"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+text = "0/17"
+horizontal_alignment = 2
+clip_text = true
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Daily objective"
+text_overrun_behavior = 3
+clip_text = true
+mouse_filter = 2
+
+[node name="Progress" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest2"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+text = "0/17"
+horizontal_alignment = 2
+clip_text = true
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Daily objective"
+text_overrun_behavior = 3
+clip_text = true
+mouse_filter = 2
+
+[node name="Progress" type="Label" parent="MidLeft/QuestTracker/Margin/VBox/Quest3"]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+text = "0/17"
+horizontal_alignment = 2
+clip_text = true
+mouse_filter = 2

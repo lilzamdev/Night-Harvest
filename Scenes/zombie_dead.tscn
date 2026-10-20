@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://3q0cjrhpd8jx"]
+
+[ext_resource type="Texture2D" uid="uid://dviaif5sbqhwu" path="res://Assets/Enemies/zombie/1_Default/Zombie_Default_Dead.png" id="1_o373u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl8kr"]
+atlas = ExtResource("1_o373u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnjy8"]
+atlas = ExtResource("1_o373u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4pg4"]
+atlas = ExtResource("1_o373u")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k5n2"]
+atlas = ExtResource("1_o373u")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iakw7"]
+atlas = ExtResource("1_o373u")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ceq"]
+atlas = ExtResource("1_o373u")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl8kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnjy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4pg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k5n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iakw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4ceq")
+}],
+"loop": 1,
+"name": &"zombie_dead",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 8.062258
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1001484801]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1123724719]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"zombie_dead"
+autoplay = "zombie_dead"
+frame_progress = 0.15373601
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1622488550]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_2baof")

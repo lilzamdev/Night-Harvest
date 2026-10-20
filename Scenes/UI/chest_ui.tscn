@@ -1,0 +1,297 @@
+[gd_scene format=3 uid="uid://c8h3st_u1_sc3n3"]
+
+[ext_resource type="Script" path="res://scripts/chest_ui.gd" id="1_chest_ui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.1, 0.08, 0.06, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.7, 0.35, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.75)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.12, 0.1, 0.08, 0.99)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.35, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_size = 12
+
+[node name="ChestUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_chest_ui")
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(720, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="PlayerSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HotbarLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "⚡ HOTBAR (Keys 1-4)"
+
+[node name="HotbarGrid" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BackpackLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 12
+text = "🎒 BACKPACK (24 Slots)"
+
+[node name="BackpackGrid" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 6
+
+[node name="BottomHBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StoreAllBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection/BottomHBox"]
+custom_minimum_size = Vector2(100, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Store All ➡"
+
+[node name="DropBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/PlayerSection/BottomHBox"]
+custom_minimum_size = Vector2(100, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "🗑️ Drop Item"
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ChestSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderHBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ChestIcon" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection/HeaderHBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.4, 1)
+theme_override_font_sizes/font_size = 13
+text = "RPG CHEST #7 (24 Slots)"
+
+[node name="CloseBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection/HeaderHBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "✕"
+
+[node name="ChestGrid" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 6
+
+[node name="InfoLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 10
+text = "💡 Drag to move • Right-Click to Split/Choose Amount"
+autowrap_mode = 2
+
+[node name="BottomHBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection"]
+layout_mode = 2
+alignment = 1
+
+[node name="TakeAllBtn" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/ChestSection/BottomHBox"]
+custom_minimum_size = Vector2(110, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "⬅ Take All"
+
+[node name="QuantityModal" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalPanel" type="PanelContainer" parent="QuantityModal"]
+custom_minimum_size = Vector2(320, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Margin" type="MarginContainer" parent="QuantityModal/ModalPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="QuantityModal/ModalPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ModalTitle" type="Label" parent="QuantityModal/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "HOW MANY TO TRANSFER?"
+horizontal_alignment = 1
+
+[node name="ItemRow" type="HBoxContainer" parent="QuantityModal/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ModalItemIcon" type="TextureRect" parent="QuantityModal/ModalPanel/Margin/VBox/ItemRow"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ModalItemLabel" type="Label" parent="QuantityModal/ModalPanel/Margin/VBox/ItemRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.95)
+theme_override_font_sizes/font_size = 12
+text = "Wood Log (Total: 8)"
+
+[node name="SliderRow" type="HBoxContainer" parent="QuantityModal/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MinusBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/SliderRow"]
+custom_minimum_size = Vector2(24, 22)
+layout_mode = 2
+text = "-"
+
+[node name="QuantitySlider" type="HSlider" parent="QuantityModal/ModalPanel/Margin/VBox/SliderRow"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 99.0
+value = 1.0
+
+[node name="PlusBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/SliderRow"]
+custom_minimum_size = Vector2(24, 22)
+layout_mode = 2
+text = "+"
+
+[node name="AmountLabel" type="Label" parent="QuantityModal/ModalPanel/Margin/VBox/SliderRow"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 13
+text = "1"
+horizontal_alignment = 1
+
+[node name="QuickRow" type="HBoxContainer" parent="QuantityModal/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Quick1Btn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/QuickRow"]
+custom_minimum_size = Vector2(45, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "1"
+
+[node name="Quick5Btn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/QuickRow"]
+custom_minimum_size = Vector2(45, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "5"
+
+[node name="QuickHalfBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/QuickRow"]
+custom_minimum_size = Vector2(55, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Half"
+
+[node name="QuickAllBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/QuickRow"]
+custom_minimum_size = Vector2(55, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "All"
+
+[node name="ActionRow" type="HBoxContainer" parent="QuantityModal/ModalPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ConfirmTransferBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/ActionRow"]
+custom_minimum_size = Vector2(130, 26)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Transfer"
+
+[node name="CancelTransferBtn" type="Button" parent="QuantityModal/ModalPanel/Margin/VBox/ActionRow"]
+custom_minimum_size = Vector2(80, 26)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Cancel"

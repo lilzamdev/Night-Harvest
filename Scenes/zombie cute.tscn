@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://duwdow3ytj5bs"]
+
+[ext_resource type="Texture2D" uid="uid://s6iaod6e1b32" path="res://Assets/Enemies/Zombies Free ver/1Zombie-Idle.png" id="1_e5ahk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6ok8"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mi5p"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2g2l"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tex4k"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvo0j"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnu0b"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayc8f"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnti4"]
+atlas = ExtResource("1_e5ahk")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6ok8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mi5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2g2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tex4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvo0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnu0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayc8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnti4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=745990334]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=538314091]
+sprite_frames = SubResource("SpriteFrames_2baof")
+autoplay = "default"
+frame_progress = 0.14480256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D" unique_id=475173742]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_2baof")

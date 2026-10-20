@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://i01ubsbwgg72"]
+
+[ext_resource type="Texture2D" uid="uid://ct4yvdnuso4nb" path="res://Assets/Enemies/zombie/1_Default/Zombie_Default_Walk.png" id="1_8v68n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq6il"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tlqg"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1mdp"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nox7i"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wonai"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nunfu"]
+atlas = ExtResource("1_8v68n")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq6il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tlqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1mdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nox7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wonai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nunfu")
+}],
+"loop": 1,
+"name": &"zombie_walking",
+"speed": 10.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1659198074]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910643500]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"zombie_walking"
+autoplay = "zombie_walking"

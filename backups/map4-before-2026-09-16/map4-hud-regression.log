@@ -1,0 +1,135 @@
+Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+WARNING: Nodes with non-equal opposite anchors will have their size overridden after _ready(). 
+If you want to set size, change the anchors or consider using set_deferred().
+   at: _set_size (scene/gui/control.cpp:1519)
+   GDScript backtrace (most recent call first):
+       [0] _fit_small_viewport (res://scripts/hud.gd:73)
+PASS: One existing HUD
+PASS: Minimap follows actual player
+PASS: Minimap still renders the game world
+PASS: Damage signal updates HP
+PASS: Damage reacts once
+PASS: Eating updates text immediately and animates only visual fill
+PASS: XP gain feedback works before a level-up
+PASS: Hunger and EXP tweens reach authoritative values
+PASS: Damage reaction settles
+PASS: Existing EXP formula unchanged
+PASS: Level-up has reserved gold feedback
+PASS: Level-up preserves accompanying XP gain feedback
+PASS: EXP resets and fills correctly after level-up
+PASS: Gold and inventory resource signals reach HUD
+PASS: Only gained resources react
+PASS: Stone count updates
+PASS: Compact totals retain exact tooltip
+PASS: Quest event updates aligned progress
+PASS: Changed quest progress reacts
+[QuestManager] Quest completed: collect_items — Rewards: 35XP, 50G
+PASS: Completed quest displays a checkmark
+PASS: Hotbar keyboard selection and equipment remain connected
+PASS: Selected slot remains highlighted
+PASS: Rapid hotbar selection leaves no scaled icon
+PASS: Rapid hotbar selection leaves no scaled icon
+PASS: Rapid hotbar selection leaves no scaled icon
+PASS: Rapid hotbar selection leaves no scaled icon
+PASS: Inventory button opens existing inventory
+PASS: F closes inventory
+PASS: Map shortcut opens existing map
+PASS: Map shortcut closes map
+PASS: Night urgency threshold 05:00
+PASS: Night urgency threshold 04:59
+PASS: Night urgency threshold 01:59
+PASS: Night urgency threshold 00:59
+PASS: Night urgency threshold 00:29
+PASS: Night arrival retains existing status behavior
+PASS: All action feedback and empty night timer preserve layout
+[SpawnManager] Wave spawned: 10 zombies at (112.0, 70.0)
+PASS: GameClock new day still updates HUD
+PASS: New day reacts once
+PASS: 800x600: TopLeft stays inside viewport
+PASS: 800x600: panels do not overlap 0/1
+PASS: 800x600: panels do not overlap 0/2
+PASS: 800x600: panels do not overlap 0/3
+PASS: 800x600: panels do not overlap 0/4
+PASS: 800x600: panels do not overlap 0/5
+PASS: 800x600: MidLeft stays inside viewport
+PASS: 800x600: panels do not overlap 1/2
+PASS: 800x600: panels do not overlap 1/3
+PASS: 800x600: panels do not overlap 1/4
+PASS: 800x600: panels do not overlap 1/5
+PASS: 800x600: TopCenter stays inside viewport
+PASS: 800x600: panels do not overlap 2/3
+PASS: 800x600: panels do not overlap 2/4
+PASS: 800x600: panels do not overlap 2/5
+PASS: 800x600: TopRight stays inside viewport
+PASS: 800x600: panels do not overlap 3/4
+PASS: 800x600: panels do not overlap 3/5
+PASS: 800x600: BottomRight stays inside viewport
+PASS: 800x600: panels do not overlap 4/5
+PASS: 800x600: BottomCenter/Hotbar/Container stays inside viewport
+PASS: 800x600: HP and Hunger bars have equal dimensions
+PASS: 800x600: equal hotbar slots
+PASS: 800x600: equal hotbar slots
+PASS: 800x600: equal hotbar slots
+PASS: 800x600: equal hotbar slots
+PASS: 800x600: quest counters align
+PASS: 800x600: quest counters align
+PASS: 1280x720: TopLeft stays inside viewport
+PASS: 1280x720: panels do not overlap 0/1
+PASS: 1280x720: panels do not overlap 0/2
+PASS: 1280x720: panels do not overlap 0/3
+PASS: 1280x720: panels do not overlap 0/4
+PASS: 1280x720: panels do not overlap 0/5
+PASS: 1280x720: MidLeft stays inside viewport
+PASS: 1280x720: panels do not overlap 1/2
+PASS: 1280x720: panels do not overlap 1/3
+PASS: 1280x720: panels do not overlap 1/4
+PASS: 1280x720: panels do not overlap 1/5
+PASS: 1280x720: TopCenter stays inside viewport
+PASS: 1280x720: panels do not overlap 2/3
+PASS: 1280x720: panels do not overlap 2/4
+PASS: 1280x720: panels do not overlap 2/5
+PASS: 1280x720: TopRight stays inside viewport
+PASS: 1280x720: panels do not overlap 3/4
+PASS: 1280x720: panels do not overlap 3/5
+PASS: 1280x720: BottomRight stays inside viewport
+PASS: 1280x720: panels do not overlap 4/5
+PASS: 1280x720: BottomCenter/Hotbar/Container stays inside viewport
+PASS: 1280x720: HP and Hunger bars have equal dimensions
+PASS: 1280x720: equal hotbar slots
+PASS: 1280x720: equal hotbar slots
+PASS: 1280x720: equal hotbar slots
+PASS: 1280x720: equal hotbar slots
+PASS: 1280x720: quest counters align
+PASS: 1280x720: quest counters align
+PASS: 1920x1080: TopLeft stays inside viewport
+PASS: 1920x1080: panels do not overlap 0/1
+PASS: 1920x1080: panels do not overlap 0/2
+PASS: 1920x1080: panels do not overlap 0/3
+PASS: 1920x1080: panels do not overlap 0/4
+PASS: 1920x1080: panels do not overlap 0/5
+PASS: 1920x1080: MidLeft stays inside viewport
+PASS: 1920x1080: panels do not overlap 1/2
+PASS: 1920x1080: panels do not overlap 1/3
+PASS: 1920x1080: panels do not overlap 1/4
+PASS: 1920x1080: panels do not overlap 1/5
+PASS: 1920x1080: TopCenter stays inside viewport
+PASS: 1920x1080: panels do not overlap 2/3
+PASS: 1920x1080: panels do not overlap 2/4
+PASS: 1920x1080: panels do not overlap 2/5
+PASS: 1920x1080: TopRight stays inside viewport
+PASS: 1920x1080: panels do not overlap 3/4
+PASS: 1920x1080: panels do not overlap 3/5
+PASS: 1920x1080: BottomRight stays inside viewport
+PASS: 1920x1080: panels do not overlap 4/5
+PASS: 1920x1080: BottomCenter/Hotbar/Container stays inside viewport
+PASS: 1920x1080: HP and Hunger bars have equal dimensions
+PASS: 1920x1080: equal hotbar slots
+PASS: 1920x1080: equal hotbar slots
+PASS: 1920x1080: equal hotbar slots
+PASS: 1920x1080: equal hotbar slots
+PASS: 1920x1080: quest counters align
+PASS: 1920x1080: quest counters align
+HUD REGRESSION COMPLETE: 0 failures

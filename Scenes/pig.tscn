@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dus3t318i8fvh"]
+
+[ext_resource type="Texture2D" uid="uid://cy8fafsdpd48d" path="res://Assets/Animals/Pig/Pig.png" id="1_ihjmd"]
+[ext_resource type="Script" path="res://scripts/animal.gd" id="2_animal"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88kja"]
+atlas = ExtResource("1_ihjmd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8n0"]
+atlas = ExtResource("1_ihjmd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbyq6"]
+atlas = ExtResource("1_ihjmd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbq55"]
+atlas = ExtResource("1_ihjmd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2baof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88kja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbyq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbq55")
+}],
+"loop": 1,
+"name": &"pig",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2baof"]
+radius = 8.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=776749810]
+script = ExtResource("2_animal")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=862606559]
+sprite_frames = SubResource("SpriteFrames_2baof")
+animation = &"pig"
+autoplay = "pig"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658190880]
+shape = SubResource("CircleShape2D_2baof")
