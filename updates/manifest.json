@@ -1,8 +1,8 @@
 {
   "version": "1.4.3",
   "pck_url": "https://github.com/lilzamdev/Night-Harvest/releases/download/v1.4.3/night_harvest_1.4.3.pck",
-  "sha256": "72439cd70f125e5d774da01f1216602f66cd99e68662a5659dac75cfe99c4f11",
-  "size": 9229380,
+  "sha256": "b3584150e42b7d0347b9a89b57c377c218a2ccd9d93d40ae14d0fdd1f5658a2f",
+  "size": 9229732,
   "min_base": "1.4.2",
   "notes": [
     "Night Harvest 1.4.3: ripe wheat is visible again, animals graze, peck and hop when they stand still, no more rocks inside trees, doors and gates work from both sides, and a new logo.",
