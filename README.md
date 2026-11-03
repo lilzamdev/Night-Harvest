@@ -70,8 +70,8 @@ WASD move · LEFT CLICK / SPACE use & place · 1-8 / wheel hotbar · E interact 
 (All keys can be changed in **Settings › Controls**.)
 
 ## 👥 Contributors & Credits
-- **[limbrasonadev](https://github.com/limbrasonadev)** - Project Owner & Gameplay Systems
-- **[thordyydev](https://github.com/thordyydev)** - Environmental Objects, Collision Architecture & Palette Harmonization
+- **[lilzamdev](https://github.com/lilzamdev)** - Project Owner & Gameplay Systems
+- **[ThordyyDev](https://github.com/ThordyyDev)** - Environmental Objects, Collision Architecture & Palette Harmonization
 
 ---
 Built with ❤️ using Godot 4.
